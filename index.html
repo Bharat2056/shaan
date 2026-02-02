@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ne" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaan Green Tea | Organic Ilam Tea</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#ECFDF5', // Softer Mint
+                            DEFAULT: '#10B981', // Emerald 500
+                            dark: '#047857', // Emerald 700
+                            darker: '#064E3B', // Emerald 900
+                            accent: '#F97316', // Orange 500
+                            accentDark: '#EA580C' // Orange 600
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        nepali: ['Mukta', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    },
+                    animation: {
+                        'fade-in-down': 'fadeInDown 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nepali-text { font-family: 'Mukta', sans-serif; }
+        
+        .hero-bg {
+            background-image: linear-gradient(rgba(6, 78, 59, 0.7), rgba(6, 78, 59, 0.6)), url('https://images.unsplash.com/photo-1586351012024-8bcf5e08f95b?q=80&w=2069&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Subtle pattern background for the body */
+        .tea-pattern {
+            background-color: #fafafa;
+            background-image: radial-gradient(#10B981 0.5px, transparent 0.5px), radial-gradient(#10B981 0.5px, #fafafa 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-attachment: fixed;
+            opacity: 1;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #047857; }
+
+        /* Hide scrollbar for carousel but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50">
+
+    <!-- Top Notification Bar -->
+    <div class="bg-brand-darker text-white text-xs sm:text-sm py-2 text-center font-nepali tracking-wide relative z-50">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-1 sm:gap-0">
+            <span class="hidden sm:inline"><i class="fas fa-truck mr-2 text-brand"></i> Free Delivery all over Nepal</span>
+            <span><i class="fas fa-phone-alt mr-2 text-brand"></i> Order via Phone: <a href="tel:+9779706351623" class="hover:text-brand-light transition font-semibold">+977 9706351623</a></span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav shadow-sm sticky top-0 z-40 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center relative">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group z-50">
+                <div class="w-10 h-10 bg-brand text-white rounded-full flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold tracking-tight text-gray-800 leading-none">Shaan</span>
+                    <span class="text-xs text-brand-dark font-medium tracking-widest uppercase">Green Tea</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex space-x-8 text-sm font-semibold text-gray-600 uppercase tracking-wide">
+                <a href="#home" class="hover:text-brand transition-colors py-2 border-b-2 border-transparent hover:border-brand">Home</a>
+                <a href="#benefits" class="hover:text-brand transition-colors py-2 border-b-2 border-transparent hover:border-brand">Benefits</a>
+                <a href="#gallery" class="hover:text-brand transition-colors py-2 border-b-2 border-transparent hover:border-brand">Gallery</a>
+                <a href="#reviews" class="hover:text-brand transition-colors py-2 border-b-2 border-transparent hover:border-brand">Reviews</a>
+            </div>
+
+            <!-- CTA Button (Desktop) -->
+            <a href="#order" class="hidden md:inline-flex items-center gap-2 bg-brand-accent hover:bg-brand-accentDark text-white px-6 py-2.5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                <span>Order Now</span>
+                <i class="fas fa-arrow-right text-sm"></i>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden text-2xl text-gray-700 focus:outline-none z-50 p-2">
+                <i id="menu-icon" class="fas fa-bars transition-all duration-300"></i>
+            </button>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl flex-col p-6 space-y-4 animate-fade-in-down lg:hidden z-40">
+                <a href="#home" onclick="toggleMobileMenu()" class="block text-lg font-medium text-gray-700 hover:text-brand py-2 border-b border-gray-100">Home</a>
+                <a href="#benefits" onclick="toggleMobileMenu()" class="block text-lg font-medium text-gray-700 hover:text-brand py-2 border-b border-gray-100">Benefits</a>
+                <a href="#gallery" onclick="toggleMobileMenu()" class="block text-lg font-medium text-gray-700 hover:text-brand py-2 border-b border-gray-100">Gallery</a>
+                <a href="#reviews" onclick="toggleMobileMenu()" class="block text-lg font-medium text-gray-700 hover:text-brand py-2 border-b border-gray-100">Reviews</a>
+                <a href="#order" onclick="toggleMobileMenu()" class="block text-center bg-brand-accent text-white py-3 rounded-lg font-bold shadow mt-4">Order Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-[85vh] flex items-center justify-center text-center text-white px-4 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-gray-50 to-transparent"></div>
+
+        <div class="max-w-4xl z-10 animate-fade-in-up pt-10 pb-10">
+            <div class="inline-block bg-white/20 backdrop-blur-sm border border-white/30 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider mb-6 shadow-sm">
+                <i class="fas fa-award text-yellow-400 mr-2"></i> Premium Ilam Tea
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 font-nepali leading-tight drop-shadow-lg">
+                Shaan Green Tea <br> 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-white">Local Production of ilam</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl md:text-2xl mb-10 font-nepali text-gray-100 max-w-2xl mx-auto leading-relaxed px-2">
+                प्रत्येक Sip मा प्रकृतिको स्वाद। <br> 
+                <span class="text-base sm:text-lg opacity-90 font-sans block mt-2">Experience the authentic, hand-picked taste of Ilam in every cup.</span>
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-6 sm:px-0">
+                <a href="#order" class="bg-brand-accent hover:bg-brand-accentDark text-white text-lg font-bold py-4 px-10 rounded-full shadow-2xl transition-all transform hover:scale-105 hover:shadow-orange-500/30 ring-4 ring-orange-500/20 w-full sm:w-auto">
+                    अर्डर गर्नुहोस्
+                </a>
+                <a href="#benefits" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/40 text-white text-lg font-bold py-4 px-10 rounded-full shadow-lg transition-all hover:shadow-xl w-full sm:w-auto">
+                    फाइदाहरू
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-16 md:py-20 bg-gray-50 tea-pattern">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16 max-w-2xl mx-auto">
+                <span class="text-brand font-bold tracking-wider uppercase text-sm">Why Choose Us</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 font-nepali text-gray-800">
+                    मुख्य फाइदाहरू (Main Benefits)
+                </h2>
+                <div class="w-20 h-1 bg-brand mx-auto mt-4 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-green-100 text-brand rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:bg-brand group-hover:text-white transition-colors">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gray-800 font-nepali">तौल घटाउन (Weight Loss)</h3>
+                    <p class="text-gray-600 font-nepali leading-relaxed">शरीरको fat burn र weight loss मा सहयोग गर्छ, जसले तपाईंलाई फिट राख्न मद्दत गर्छ।</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-green-100 text-brand rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:bg-brand group-hover:text-white transition-colors">
+                        <i class="fas fa-droplet"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gray-800 font-nepali">सुगर नियन्त्रण (Diabetes)</h3>
+                    <p class="text-gray-600 font-nepali leading-relaxed">Sugar (Diabetes) भएका व्यक्तिका लागि उपयोगी — शरीरमा blood sugar level नियन्त्रण गर्न मद्दत गर्छ।</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-green-100 text-brand rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:bg-brand group-hover:text-white transition-colors">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gray-800 font-nepali">मुटु र प्रेसर (BP & Heart)</h3>
+                    <p class="text-gray-600 font-nepali leading-relaxed">High Blood Pressure भएका व्यक्तिका लागि लाभदायी — रगतको circulation सुधार गर्छ र pressure सन्तुलनमा राख्छ। Cholesterol घटाएर मुटुको स्वास्थ्य राम्रो राख्छ।</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-green-100 text-brand rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:bg-brand group-hover:text-white transition-colors">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gray-800 font-nepali">Detox & Glow</h3>
+                    <p class="text-gray-600 font-nepali leading-relaxed">शरीरलाई detoxify गर्छ। Antioxidants ले छालालाई चम्किलो र youthful बनाउँछ।</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-green-100 text-brand rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:bg-brand group-hover:text-white transition-colors">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gray-800 font-nepali">ग्यास्ट्रिक (Digestion)</h3>
+                    <p class="text-gray-600 font-nepali leading-relaxed">Gastric र पेट फुल्ने समस्या कम गर्छ। Digestion सुधार गर्छ।</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover transition-all duration-300 border border-gray-100 group">
+                    <div class="w-14 h-14 bg-green-100 text-brand rounded-2xl flex items-center justify-center mb-6 text-2xl group-hover:bg-brand group-hover:text-white transition-colors">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gray-800 font-nepali">तनाव कम (Stress Relief)</h3>
+                    <p class="text-gray-600 font-nepali leading-relaxed">Stress घटाउँछ र मनलाई शान्त राख्छ।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brewing & Usage -->
+    <section class="py-16 md:py-20 bg-brand-darker text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
+                
+                <!-- Steps -->
+                <div class="w-full lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 font-nepali">🫖 बनाउने प्रक्रिया (Brewing Guidelines)</h2>
+                    
+                    <div class="space-y-6 md:space-y-8">
+                        <!-- Step 1 -->
+                        <div class="flex gap-4 md:gap-6 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center border border-white/20 group-hover:bg-brand group-hover:border-brand transition-colors">
+                                <i class="fas fa-fire text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 font-nepali">1. Boil & Cool</h3>
+                                <p class="text-gray-300 font-nepali leading-relaxed text-sm md:text-base">Boil Fresh Water. Stop Flame. ताजा पानीलाई उमाल्नुहोस् । आगो बन्द गर्नुहोस।</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex gap-4 md:gap-6 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center border border-white/20 group-hover:bg-brand group-hover:border-brand transition-colors">
+                                <i class="fas fa-leaf text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 font-nepali">2. Add Leaves</h3>
+                                <p class="text-gray-300 font-nepali leading-relaxed text-sm md:text-base">Add 1 Tsp Green Tea. (If you don't have an idea of teaspoons, you can just count and add 14-15 green tea). सानो चम्चा को १ चम्चा Green Tea हाल्नुहोस् । (चमच को Idea भएन भने Count गरेर १४-१५ वटा Green Tea हाल्दा नि हुन्छ )</p>
+                            </div>
+                        </div>
+
+                         <!-- Step 3 -->
+                         <div class="flex gap-4 md:gap-6 group">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white/10 rounded-full flex items-center justify-center border border-white/20 group-hover:bg-brand group-hover:border-brand transition-colors">
+                                <i class="fas fa-clock text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-2 font-nepali">3. Steep & Serve</h3>
+                                <p class="text-gray-300 font-nepali leading-relaxed text-sm md:text-base">Steep for 3-5 mins to release full flavour & aroma. पूरा स्वाद र सुगन्ध निकाल्न ३-५ मिनेटसम्म छोडेर राख्नुहोस् । यसको प्राकृतिक मिठासको आनन्द लिन चिनी बिना तात्तातै पिउनुहोस् ।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Card -->
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/10">
+                        <div class="mb-8">
+                            <h4 class="text-xl md:text-2xl font-bold mb-4 font-nepali flex items-center"><i class="fas fa-sun text-yellow-400 mr-3"></i> सेवन गर्ने समय</h4>
+                            <p class="font-nepali text-base md:text-lg text-gray-200">
+                                <span class="block mb-2"><i class="fas fa-check mr-2 text-brand"></i> दिनमा २ पटक</span>
+                                <span class="block mb-2"><i class="fas fa-check mr-2 text-brand"></i> बिहानको खाजा पछि (After Breakfast)</span>
+                                <span class="block"><i class="fas fa-check mr-2 text-brand"></i> दिउँसोको समयमा (Afternoon)</span>
+                            </p>
+                        </div>
+                        
+                        <div class="bg-red-500/20 border border-red-500/50 p-4 md:p-6 rounded-2xl">
+                            <h4 class="text-lg md:text-xl font-bold mb-2 font-nepali text-red-200 flex items-center"><i class="fas fa-exclamation-circle mr-3"></i> विशेष सावधानी (Note)</h4>
+                            <p class="font-nepali text-gray-200 text-sm md:text-base">
+                                Low Blood Pressure भएका व्यक्तिले दिनमा १ पटक, केवल दिउँसो मात्र सेवन गर्नुहोस्।
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4">
+             <div class="text-center mb-12 md:mb-16">
+                <span class="text-brand font-bold tracking-wider uppercase text-sm">Visual Journey</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 font-nepali text-gray-800">हाम्रो ग्यालरी (Gallery)</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                <!-- Image 1: Garden -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1596436889106-be35e843f974?q=80&w=1000&auto=format&fit=crop" alt="Ilam Tea Garden" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+                 <!-- Image 2: Cup -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=1000&auto=format&fit=crop" alt="Green Tea Cup" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                         <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+                 <!-- Image 3: Leaves -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7c1f?q=80&w=1000&auto=format&fit=crop" alt="Tea Leaves" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                         <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+                <!-- Image 4: Pouring -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=1000&auto=format&fit=crop" alt="Pouring Tea" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                         <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+                 <!-- Image 5: Pot -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1587593810167-a6492031e54a?q=80&w=1000&auto=format&fit=crop" alt="Tea Pot" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                         <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+                 <!-- Image 6: Packaging -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?q=80&w=1000&auto=format&fit=crop" alt="Packaging" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                         <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+                 <!-- Image 7: Picking Tea (New) -->
+                 <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?q=80&w=1000&auto=format&fit=crop" alt="Picking Tea" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                         <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+                <!-- Image 8: Texture (New) -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=1000&auto=format&fit=crop" alt="Tea Texture" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                         <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+                <!-- Image 9: Relaxing (New) -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg h-64 md:h-72 cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?q=80&w=1000&auto=format&fit=crop" alt="Relaxing Tea" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                         <span class="text-white font-bold border border-white px-4 py-2 rounded-full uppercase tracking-wider text-sm backdrop-blur-sm">View</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials (Carousel) -->
+    <section id="reviews" class="py-16 md:py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 md:mb-16">
+                <span class="text-brand font-bold tracking-wider uppercase text-sm">Testimonials</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 font-nepali text-gray-800">हाम्रा ग्राहकहरूको प्रतिक्रिया</h2>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto">
+                <!-- Nav Buttons -->
+                <button onclick="scrollReviews('left')" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 lg:-translate-x-6 z-10 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-brand hover:bg-brand hover:text-white transition-all focus:outline-none group">
+                    <i class="fas fa-chevron-left group-hover:-translate-x-0.5 transition-transform"></i>
+                </button>
+                <button onclick="scrollReviews('right')" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 lg:translate-x-6 z-10 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-brand hover:bg-brand hover:text-white transition-all focus:outline-none group">
+                    <i class="fas fa-chevron-right group-hover:translate-x-0.5 transition-transform"></i>
+                </button>
+
+                <!-- Carousel Track -->
+                <div id="reviews-track" class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar px-4 py-4">
+                    
+                    <!-- Review 1 -->
+                    <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[30%] snap-center bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover border border-gray-100 transition-all flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-light text-brand flex items-center justify-center font-bold text-lg mr-3">A</div>
+                            <div>
+                                <div class="font-bold text-gray-800">Alisha Rai</div>
+                                <div class="text-xs text-brand-dark flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Purchase</div>
+                            </div>
+                            <div class="ml-auto text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 font-nepali italic leading-relaxed text-sm md:text-base">"Order गरेको २ दिन मा पाएको थिए, Fast Delivery हुदो रहेछ। प्याकेजिङ पनि राम्रो छ।"</p>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[30%] snap-center bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover border border-gray-100 transition-all flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-light text-brand flex items-center justify-center font-bold text-lg mr-3">S</div>
+                            <div>
+                                <div class="font-bold text-gray-800">sushma bhujel</div>
+                                <div class="text-xs text-brand-dark flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Purchase</div>
+                            </div>
+                            <div class="ml-auto text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 font-nepali italic leading-relaxed text-sm md:text-base">"Green Tea ko Taste ठिक लाग्यो मलाई। Fresh रहेछ Quality पनि। तर, नेपाल मा Health conscious मान्छे अलिक कम नै छ्न। यस को Benefit थाहा पाउन अलिक समय लाग्छ।"</p>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[30%] snap-center bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover border border-gray-100 transition-all flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-light text-brand flex items-center justify-center font-bold text-lg mr-3">S</div>
+                            <div>
+                                <div class="font-bold text-gray-800">Saraswati Thapa</div>
+                                <div class="text-xs text-brand-dark flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Purchase</div>
+                            </div>
+                            <div class="ml-auto text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 font-nepali italic leading-relaxed text-sm md:text-base">"maile 2 time piuxu ek dam ramro kam gareko best green tea"</p>
+                    </div>
+
+                    <!-- Review 4 -->
+                    <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[30%] snap-center bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover border border-gray-100 transition-all flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-light text-brand flex items-center justify-center font-bold text-lg mr-3">S</div>
+                            <div>
+                                <div class="font-bold text-gray-800">Sarita Maharjan</div>
+                                <div class="text-xs text-brand-dark flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Purchase</div>
+                            </div>
+                            <div class="ml-auto text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 font-nepali italic leading-relaxed text-sm md:text-base">"२ बर्ष भयो मैले त यो अर्गानिक ग्रिन्टी नियमित १ गिलास पिउन थालेको धेरै फाइदा गरेको छ"</p>
+                    </div>
+
+                    <!-- Review 5 -->
+                    <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[30%] snap-center bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover border border-gray-100 transition-all flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-light text-brand flex items-center justify-center font-bold text-lg mr-3">P</div>
+                            <div>
+                                <div class="font-bold text-gray-800">Prakash Rasaili</div>
+                                <div class="text-xs text-brand-dark flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Purchase</div>
+                            </div>
+                            <div class="ml-auto text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 font-nepali italic leading-relaxed text-sm md:text-base">"Ma piudai xu ! Good result 👍️"</p>
+                    </div>
+
+                      <!-- Review 6 -->
+                      <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[30%] snap-center bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-hover border border-gray-100 transition-all flex flex-col">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-light text-brand flex items-center justify-center font-bold text-lg mr-3">S</div>
+                            <div>
+                                <div class="font-bold text-gray-800">Sara Wagle</div>
+                                <div class="text-xs text-brand-dark flex items-center"><i class="fas fa-check-circle mr-1"></i> Verified Purchase</div>
+                            </div>
+                            <div class="ml-auto text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 font-nepali italic leading-relaxed text-sm md:text-base">"सबैले खानु हाेला राम्राे छ Pearl Green Tea"</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 md:py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h2 class="text-3xl font-bold text-center mb-12 font-nepali text-gray-800">बारम्बार सोधिने प्रश्नहरू (FAQ)</h2>
+            
+            <div class="space-y-4">
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-light transition-all open:bg-white open:shadow-md">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-bold font-nepali text-gray-800 list-none">
+                        <span>Green Tea भनेको के हो?</span>
+                        <span class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm transition group-open:rotate-180 group-open:bg-brand group-open:text-white"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 font-nepali leading-relaxed">
+                        Green Tea भनेको हाते चिया हो, जुन नेपाल को पुर्वि इलामि भेग मा उत्पादन गरिन्छ। यस मा कुनै पनि Chemicals, Artificial Color / Flavor केही पनि हालिएको हुदैन। यो पूर्ण रूपमा अर्गानिक हुन्छ।
+                    </div>
+                </details>
+
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-light transition-all open:bg-white open:shadow-md">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-bold font-nepali text-gray-800 list-none">
+                         <span>यस ले शरीर लाई के के फाइदा गर्छ?</span>
+                        <span class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm transition group-open:rotate-180 group-open:bg-brand group-open:text-white"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 font-nepali leading-relaxed">
+                         यो चिया नै हो, चिया बाट पाउने तत्त्व त पाई नै हाल्छौं Plus शरीर लाई Extra Benefit पनि गर्छ। यस ले शरीर मा Metabolism Activity बढाउछ, सजिलै सङ्ग Digestion गराउन Help गर्छ। यस ले शरीर मा Extra Fat , Bad cholesterol बन्न दिदैन। त्यो भएको हुदा cholesterol भएको लाई पनि फाइदा। यस ले Pressure High भएको लाई पनि राम्रो गर्छ Plus Sugar रोगी लाई पनि राम्रो गर्छ।
+                    </div>
+                </details>
+
+                 <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-light transition-all open:bg-white open:shadow-md">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-bold font-nepali text-gray-800 list-none">
+                         <span>किन यत्ती महङ्गो छ त?</span>
+                        <span class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm transition group-open:rotate-180 group-open:bg-brand group-open:text-white"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 font-nepali leading-relaxed">
+                         Green Tea धेरै किसिम को हुन्छ। त्यो मध्ये Pearl Green Tea अलिक महङ्गो नै पर्छ। Plus नेपाल भरी Free Delivery हो ।
+                    </div>
+                </details>
+
+                 <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-light transition-all open:bg-white open:shadow-md">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-bold font-nepali text-gray-800 list-none">
+                         <span>250 Gram ले कति दिन पुग्छ?</span>
+                        <span class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm transition group-open:rotate-180 group-open:bg-brand group-open:text-white"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 font-nepali leading-relaxed">
+                         250 ग्राम ले एक जना लाई, एक दिन मा २ पटक Regular Consume गर्दा , लगभग २-३ महिना जति पुग्छ।
+                    </div>
+                </details>
+
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 hover:border-brand-light transition-all open:bg-white open:shadow-md">
+                    <summary class="flex justify-between items-center cursor-pointer p-6 font-bold font-nepali text-gray-800 list-none">
+                        <span>कती दिन मा आईपुग्छ सामान?</span>
+                        <span class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm transition group-open:rotate-180 group-open:bg-brand group-open:text-white"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <div class="px-6 pb-6 text-gray-600 font-nepali leading-relaxed">
+                        माथी Order Complete गरे पछि, Mobile Number Confirmation, our team will call you first. त्यस पछि २-३ दिन भित्र ( Depends upon Location ) हजुर ले प्राप्त गर्नु हुनेछ।
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product & Order Section (Moved to Last) -->
+    <section id="order" class="py-16 md:py-24 bg-gray-50 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    
+                    <!-- Left Side: Product Visual -->
+                    <div class="p-8 lg:p-14 bg-gradient-to-br from-brand-light to-white flex flex-col justify-center items-center text-center relative overflow-hidden">
+                        <!-- Decor -->
+                        <div class="absolute top-0 left-0 w-32 h-32 bg-brand/10 rounded-full blur-3xl"></div>
+                        <div class="absolute bottom-0 right-0 w-40 h-40 bg-brand-accent/10 rounded-full blur-3xl"></div>
+
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-brand rounded-full blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                            <img src="https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?q=80&w=1000&auto=format&fit=crop" alt="Shaan Green Tea Pack" class="relative w-64 h-64 sm:w-72 sm:h-72 object-cover rounded-full shadow-2xl border-4 border-white mb-8 transform transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3">
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">Shaan Green Tea</h2>
+                        <p class="text-brand-dark font-medium mb-6 font-nepali tracking-wide bg-brand-light px-4 py-1 rounded-full border border-brand/20 text-sm sm:text-base">
+                            हाते चिया (Hand-picked & Open-dried)
+                        </p>
+                        
+                        <div class="flex items-baseline justify-center gap-3 mb-8">
+                            <span class="text-gray-400 line-through text-xl font-medium">Rs. 1,110</span>
+                            <span class="text-4xl sm:text-5xl font-bold text-brand-dark" id="display-price">Rs. 960</span>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-2xl shadow-soft w-full max-w-sm border border-gray-100">
+                            <h4 class="font-bold text-lg mb-4 text-brand-dark border-b border-gray-100 pb-2">Why Pearl Green Tea?</h4>
+                            <ul class="text-left space-y-3 text-gray-600 font-nepali text-sm sm:text-base">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-brand mr-3"></i> १००% Pure Ilam-grown tea leaves</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-brand mr-3"></i> Hand-picked & Open-dried</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-brand mr-3"></i> कुनै पनि artificial flavor वा color छैन</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-brand mr-3"></i> Hygienically packed र freshness</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Order Form -->
+                    <div class="p-8 lg:p-14 bg-white">
+                        <div class="mb-8">
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-2 font-nepali text-gray-800">अर्डर गर्न फारम भर्नुहोस्</h3>
+                            <p class="text-gray-500 text-sm font-nepali mt-2 bg-yellow-50 p-3 rounded-lg border border-yellow-100 text-yellow-800">
+                                <i class="fas fa-info-circle mr-1"></i> Order गर्न को लागि तल को फारम भर्नु होला , केही जिज्ञासा भए हामिलाई Whatsapp वा Phone Number मा सोध्नु होला। हाम्रो नम्बर तल दिइएको छ।
+                            </p>
+                        </div>
+                        
+                        <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-6">
+                            
+                            <!-- Package Selection -->
+                            <div>
+                                <label class="block text-gray-700 font-bold mb-3 text-sm uppercase tracking-wide">प्याकेट छान्नुहोस् (Select Package)</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <!-- Option 1 -->
+                                    <label class="relative cursor-pointer group">
+                                        <input type="radio" name="package" value="250g" class="peer hidden" checked onchange="updatePrice(960)">
+                                        <div class="border-2 border-gray-200 rounded-xl p-4 text-center hover:border-brand transition-all peer-checked:border-brand peer-checked:bg-brand-light peer-checked:shadow-md">
+                                            <span class="block text-lg font-bold text-gray-800 peer-checked:text-brand-dark">250g</span>
+                                            <span class="block text-sm text-gray-500 mt-1">Rs. 960</span>
+                                            <div class="absolute -top-3 -right-3 bg-brand text-white text-xs px-2 py-1 rounded-full hidden peer-checked:block shadow-sm"><i class="fas fa-check"></i></div>
+                                        </div>
+                                    </label>
+                                    <!-- Option 2 -->
+                                    <label class="relative cursor-pointer group">
+                                        <input type="radio" name="package" value="500g" class="peer hidden" onchange="updatePrice(1700)">
+                                        <div class="border-2 border-gray-200 rounded-xl p-4 text-center hover:border-brand transition-all peer-checked:border-brand peer-checked:bg-brand-light peer-checked:shadow-md">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-yellow-900 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Popular</div>
+                                            <span class="block text-lg font-bold text-gray-800 peer-checked:text-brand-dark">Half Kg</span>
+                                            <span class="block text-sm text-gray-500 mt-1">Rs. 1,700</span>
+                                            <div class="absolute -top-3 -right-3 bg-brand text-white text-xs px-2 py-1 rounded-full hidden peer-checked:block shadow-sm"><i class="fas fa-check"></i></div>
+                                        </div>
+                                    </label>
+                                    <!-- Option 3 -->
+                                    <label class="relative cursor-pointer group">
+                                        <input type="radio" name="package" value="1kg" class="peer hidden" onchange="updatePrice(3000)">
+                                        <div class="border-2 border-gray-200 rounded-xl p-4 text-center hover:border-brand transition-all peer-checked:border-brand peer-checked:bg-brand-light peer-checked:shadow-md">
+                                            <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-brand-dark text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Best Value</div>
+                                            <span class="block text-lg font-bold text-gray-800 peer-checked:text-brand-dark">1 Kg</span>
+                                            <span class="block text-sm text-gray-500 mt-1">Rs. 3,000</span>
+                                            <div class="absolute -top-3 -right-3 bg-brand text-white text-xs px-2 py-1 rounded-full hidden peer-checked:block shadow-sm"><i class="fas fa-check"></i></div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Inputs -->
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-gray-700 text-xs font-bold mb-1 uppercase tracking-wide">Full Name*</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400"><i class="fas fa-user"></i></span>
+                                        <input type="text" id="fullname" required class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:bg-white transition-all" placeholder="Ram Bahadur">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-xs font-bold mb-1 uppercase tracking-wide">Mobile Number*</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400"><i class="fas fa-phone"></i></span>
+                                        <input type="tel" id="mobile" required class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:bg-white transition-all" placeholder="98XXXXXXXX">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 text-xs font-bold mb-1 uppercase tracking-wide">Full Address*</label>
+                                    <div class="relative">
+                                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400"><i class="fas fa-map-marker-alt"></i></span>
+                                        <input type="text" id="address" required class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand focus:bg-white transition-all" placeholder="Street, City, District">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="w-full bg-brand-darker hover:bg-black text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-2xl transition-all transform active:scale-95 flex justify-between items-center group">
+                                <span class="flex flex-col text-left">
+                                    <span class="text-xs font-normal opacity-80 uppercase">Total Amount</span>
+                                    <span class="text-xl" id="btn-price">Rs. 960</span>
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <span>COMPLETE ORDER</span>
+                                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </button>
+                            
+                            <p class="text-center text-xs text-gray-400 mt-4">
+                                <i class="fas fa-lock mr-1"></i> Your information is safe. Payment via Cash on Delivery.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 md:py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 border-b border-gray-800 pb-12">
+                <div class="col-span-1 lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-6 text-white">
+                        <i class="fas fa-leaf text-brand text-2xl"></i>
+                        <span class="text-xl font-bold">Shaan Green Tea</span>
+                    </div>
+                    <p class="text-sm leading-relaxed mb-6 text-gray-400">
+                        Bringing the authentic taste of Ilam to your doorstep. Organic, hand-picked, and full of health benefits.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-black hover:text-white transition-all"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-brand transition-colors">Home</a></li>
+                        <li><a href="#benefits" class="hover:text-brand transition-colors">Benefits</a></li>
+                        <li><a href="#order" class="hover:text-brand transition-colors">Order Now</a></li>
+                        <li><a href="#faq" class="hover:text-brand transition-colors">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-6">Contact Us</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3 text-brand"></i>
+                            <span>+977 9706351623</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-whatsapp mt-1 mr-3 text-brand"></i>
+                            <span>+977 9706351623</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-brand"></i>
+                            <span>shaangreentea@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-6">Legal</h4>
+                    <p class="text-sm text-gray-400 mb-4">Packaging & Marketing by Shaan Natural Nepal.</p>
+                    <p class="text-xs text-gray-500">© 2026 Shaan Green Tea. All rights reserved.</p>
+                </div>
+            </div>
+            
+            <div class="text-center text-xs text-gray-600">
+                <p>Designed with <i class="fas fa-heart text-red-500"></i> in Nepal</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed WhatsApp Button -->
+    <a href="https://wa.me/9779706351623" target="_blank" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-green-500 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl hover:bg-green-600 transition-all z-50 animate-bounce flex items-center justify-center text-2xl md:text-3xl group">
+        <i class="fab fa-whatsapp group-hover:scale-110 transition-transform"></i>
+    </a>
+
+    <!-- Order Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center z-50 p-4 transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl transform scale-100 transition-transform">
+            <div class="w-20 h-20 bg-green-100 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl shadow-inner">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2 text-gray-800">Order Placed!</h3>
+            <p class="text-gray-500 mb-8 font-nepali">धन्यवाद! हाम्रो टिमले तपाईंलाई छिट्टै सम्पर्क गर्नेछ।</p>
+            <button onclick="closeModal()" class="bg-brand hover:bg-brand-dark text-white px-8 py-3 rounded-xl font-bold w-full transition-colors shadow-lg">OK, Thanks</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+            
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        }
+
+        // Update Price Logic
+        function updatePrice(price) {
+            // Animate price change
+            const priceEl = document.getElementById('display-price');
+            const btnPriceEl = document.getElementById('btn-price');
+            
+            priceEl.style.opacity = '0';
+            setTimeout(() => {
+                priceEl.innerText = 'Rs. ' + price;
+                priceEl.style.opacity = '1';
+                btnPriceEl.innerText = 'Rs. ' + price;
+            }, 200);
+        }
+
+        // Form Submit Logic
+        function submitOrder(e) {
+            e.preventDefault();
+            
+            // Show Success Modal
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('hidden');
+            
+            // Reset Form
+            document.getElementById('orderForm').reset();
+            updatePrice(960); 
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        // Carousel Logic
+        function scrollReviews(direction) {
+            const track = document.getElementById('reviews-track');
+            const cardWidth = track.firstElementChild.offsetWidth;
+            const gap = 24; // tailwind gap-6 is 1.5rem = 24px
+            const scrollAmount = cardWidth + gap;
+
+            if (direction === 'left') {
+                track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
