@@ -353,17 +353,26 @@
         </div>
     </section>
 
-    <!-- Reviews Section (More Reviews Added) -->
-    <section id="reviews" class="py-24 bg-gray-50">
+    <!-- Reviews Section (6 Reviews, 3 on screen for Desktop) -->
+    <section id="reviews" class="py-24 bg-gray-50 relative overflow-hidden">
       <div class="container mx-auto px-4 text-center mb-20">
         <span class="text-brand font-black uppercase tracking-[0.3em] text-xs mb-4 block">Testimonials</span>
         <h2 class="text-4xl md:text-6xl font-black text-gray-900 font-nepali">ग्राहकहरूको विश्वास</h2>
       </div>
-      <div class="container mx-auto px-4">
-        <div id="reviews-track" class="flex gap-8 overflow-x-auto pb-12 snap-x hide-scrollbar">
+
+      <div class="container mx-auto px-4 relative">
+        <!-- Carousel Navigation Arrows -->
+        <button onclick="scrollReviews('left')" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-premium flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-all">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button onclick="scrollReviews('right')" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white rounded-full shadow-premium flex items-center justify-center text-brand hover:bg-brand hover:text-white transition-all">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div id="reviews-track" class="flex gap-6 md:gap-8 overflow-x-auto pb-12 snap-x snap-mandatory hide-scrollbar scroll-smooth">
           
-          <!-- Review Card 1 (sushma bhujel) -->
-          <div class="min-w-[320px] md:min-w-[420px] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
+          <!-- Review Card 1 -->
+          <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[calc(33.33%-1.5rem)] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
             <div class="h-64 w-full overflow-hidden">
                 <img src="https://shaangreentea.com/cdn/shop/files/1000060205_dc30f9b8-f664-4910-b640-37cf17d68574.jpg?v=1762010527&width=713" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
             </div>
@@ -384,8 +393,8 @@
             </div>
           </div>
 
-          <!-- Review Card 2 (Alisha Rai) -->
-          <div class="min-w-[320px] md:min-w-[420px] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
+          <!-- Review Card 2 -->
+          <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[calc(33.33%-1.5rem)] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
             <div class="h-64 w-full overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
             </div>
@@ -406,8 +415,8 @@
             </div>
           </div>
 
-          <!-- Review Card 3 (Sarita Maharjan) -->
-          <div class="min-w-[320px] md:min-w-[420px] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
+          <!-- Review Card 3 -->
+          <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[calc(33.33%-1.5rem)] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
             <div class="h-64 w-full overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
             </div>
@@ -428,8 +437,8 @@
             </div>
           </div>
 
-          <!-- Review Card 4 (Saraswati Thapa) -->
-          <div class="min-w-[320px] md:min-w-[420px] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
+          <!-- Review Card 4 -->
+          <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[calc(33.33%-1.5rem)] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
             <div class="h-64 w-full overflow-hidden">
                 <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7c1f?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
             </div>
@@ -450,8 +459,8 @@
             </div>
           </div>
 
-          <!-- Review Card 5 (Prakash Rasaili) -->
-          <div class="min-w-[320px] md:min-w-[420px] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
+          <!-- Review Card 5 -->
+          <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[calc(33.33%-1.5rem)] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
             <div class="h-64 w-full overflow-hidden">
                 <img src="https://cdn.shopify.com/s/files/1/0777/3231/5359/files/1000015200_1.jpg?v=1762010939" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
             </div>
@@ -464,6 +473,28 @@
                 <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-xl object-cover shadow-sm">
                 <div>
                   <div class="font-black text-gray-900 text-base leading-none mb-1">Prakash Rasaili</div>
+                  <div class="text-[10px] text-brand-star font-black uppercase tracking-widest flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-brand-star"></span> Verified Purchase
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review Card 6 -->
+          <div class="min-w-[85vw] md:min-w-[45%] lg:min-w-[calc(33.33%-1.5rem)] bg-white rounded-[2.5rem] shadow-premium snap-center overflow-hidden flex flex-col group">
+            <div class="h-64 w-full overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1587593810167-a6492031e54a?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+            </div>
+            <div class="p-8 flex flex-col flex-1">
+              <div class="flex gap-1 mb-4 text-brand-star text-sm">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="text-gray-800 font-nepali leading-relaxed mb-8">"सबैले खानु हाेला राम्राे छ Shaan Green Tea. It's the best organic tea in Nepal."</p>
+              <div class="flex items-center gap-4 mt-auto border-t border-gray-50 pt-6">
+                <img src="https://randomuser.me/api/portraits/women/90.jpg" class="w-12 h-12 rounded-xl object-cover shadow-sm">
+                <div>
+                  <div class="font-black text-gray-900 text-base leading-none mb-1">Sara Wagle</div>
                   <div class="text-[10px] text-brand-star font-black uppercase tracking-widest flex items-center gap-2">
                       <span class="w-1.5 h-1.5 rounded-full bg-brand-star"></span> Verified Purchase
                   </div>
@@ -487,7 +518,7 @@
                 <div class="p-8 bg-gray-50 rounded-3xl">
                     <h4 class="text-xl font-bold mb-4 font-nepali">ग्रिन टी पिउने सही समय कुन हो?</h4>
                     <p class="text-gray-500 font-nepali leading-relaxed">
-                        बिहानको खाना (Breakfast) खाएको १ घण्टा पछि वा दिउँसोको खाना खाएको १ घण्टा पछि पिउनु उत्तम हुन्छ। खालि पेटमा भन्दा केही खाएपछि पिउँदा यसले पाचन प्रक्रियामा राम्रो मद्दत गर्छ।
+                        बिहानको खाना (Breakfast) खाएको १ घण्टा पपछि वा दिउँसोको खाना खाएको १ घण्टा पछि पिउनु उत्तम हुन्छ। खालि पेटमा भन्दा केही खाएपछि पिउँदा यसले पाचन प्रक्रियामा राम्रो मद्दत गर्छ।
                     </p>
                 </div>
                 <div class="p-8 bg-gray-50 rounded-3xl">
@@ -657,6 +688,14 @@
       function closeModal() { 
           document.getElementById("successModal").classList.add("hidden"); 
           window.location.hash = "#home";
+      }
+
+      // Carousel Navigation Script
+      function scrollReviews(direction) {
+        const track = document.getElementById('reviews-track');
+        const cardWidth = track.firstElementChild.offsetWidth;
+        const scrollAmount = direction === 'left' ? -cardWidth - 32 : cardWidth + 32;
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       }
 
       // Live Order Simulation
